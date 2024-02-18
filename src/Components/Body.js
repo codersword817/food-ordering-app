@@ -1197,7 +1197,7 @@ function Body() {
       <Search></Search>
       <div className="outerContainer">
         {data.map((e) => {
-          return <ItemContainer resData={e}></ItemContainer>;
+          return <ItemContainer key={e.info.id} resData={e}></ItemContainer>;
         })}
       </div>
     </div>
