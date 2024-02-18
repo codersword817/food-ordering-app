@@ -1,0 +1,18 @@
+#search-button {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-left: 1rem;
+}
+
+#search-text {
+  padding: 1rem;
+  margin: 1rem;
+  width: 40rem;
+  border-radius: 1rem;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
