@@ -1,12 +1,12 @@
 import React from "react";
 import "./ItemContainer.css";
+import { CDN_URL } from "../utils/constants";
 
 function ItemContainer(props) {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
     resData?.info;
-  const url =
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+  const url = CDN_URL;
   return (
     <div>
       <div className="container">
