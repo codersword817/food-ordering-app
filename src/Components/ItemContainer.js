@@ -4,24 +4,24 @@ import { CDN_URL } from "../utils/constants";
 
 function ItemContainer(props) {
   const { resData } = props;
-  const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
-    resData?.info;
+  // const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
+  //   resData?.info;
   const url = CDN_URL;
   return (
     <div>
       <div className="container">
         <img
           className="food-item"
-          src={url + cloudinaryImageId}
+          src={url + resData.cloudinaryImageId}
           alt="food-item-img"
         />
-        <div>{name}</div>
-        <div className="content">{cuisines.join(", ")}</div>
+        <div>{resData.name}</div>
+        <div className="content">{resData.cuisines.join(", ")}</div>
         <div className="rating">
-          {avgRating} rating,
-          {sla.deliveryTime} minutes
+          {resData.avgRating} rating,
+          {resData.sla.deliveryTime} minutes
         </div>
-        <h4>{costForTwo}</h4>
+        <h4>{resData.costForTwo}</h4>
       </div>
     </div>
   );
