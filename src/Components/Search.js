@@ -4,7 +4,12 @@ import "./Search.css";
 function Search(props) {
   return (
     <div className="searchContainer">
-      <input type="text" name="search" id="search-text" />
+      <input
+        type="text"
+        name="search"
+        id="search-text"
+        placeholder="Order ypur Fav Food at ur Nearby Stores"
+      />
       <button id="search-button" className="btn">
         Search
       </button>
