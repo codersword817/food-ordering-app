@@ -4,3 +4,24 @@
   grid-template-columns: repeat(4, 1fr);
   /* grid-gap: 1rem; */
 }
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+#search-text {
+  padding: 1rem;
+  margin: 1rem;
+  width: 40rem;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -33,3 +33,9 @@ body {
 .nav-items ul li {
   padding: 0 2rem;
 }
+
+.login {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  width: 5rem;
+}
