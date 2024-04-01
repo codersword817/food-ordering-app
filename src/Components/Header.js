@@ -2,11 +2,12 @@ import React from "react";
 import "./Header.css";
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
 import Body from "./Body";
 import Error from "./Error";
 import Contact from "./Contact";
 import About from "./About";
+import Menu from "./Menu";
 function Header() {
   const [btnValue, setBtnValue] = useState("Login");
   const btnHandler = () => {
@@ -21,16 +22,16 @@ function Header() {
         <div className="nav-items">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="/about">About Us</Link>
+              <NavLink to="/about">About Us</NavLink>
             </li>
             <li>
-              <Link to="/contact">Contact Us</Link>
+              <NavLink to="/contact">Contact Us</NavLink>
             </li>
             <li>
-              <Link to="/cart">Cart</Link>
+              <NavLink to="/cart">Cart</NavLink>
             </li>
             <button className="login" onClick={btnHandler}>
               {btnValue}
@@ -42,6 +43,7 @@ function Header() {
         <Route path="/" element={<Body />}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/contact" element={<Contact></Contact>}></Route>
+        <Route path="/restaurants/:id" element={<Menu />}></Route>
         <Route path="*" element={<Error></Error>}></Route>
       </Routes>
     </>

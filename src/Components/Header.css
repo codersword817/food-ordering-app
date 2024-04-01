@@ -45,3 +45,8 @@ body {
   text-decoration: none;
   color: black;
 }
+
+.nav-items ul a:active,
+a:visited {
+  text-decoration: underline;
+}

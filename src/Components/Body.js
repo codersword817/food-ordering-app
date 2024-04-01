@@ -3,20 +3,20 @@ import ItemContainer from "./ItemContainer";
 import "./Body.css";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import { NavLink } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 function Body() {
   const [curr_data, setData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  // console.log("Entered");
+  const onlineStatus = useOnlineStatus();
   const fetchData = async () => {
     const data = await fetch(SWIGGY_API_URL);
     const json_data = await data.json();
     const dt =
       json_data?.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    // Optional Chaining ?.  => To prevent from getting nulls in bw them
-    // console.log(dt);
     setData(dt);
     setFilteredData(dt);
   };
@@ -28,7 +28,7 @@ function Body() {
   }, []);
 
   const searchHandler = (e) => {
-    setSearchData(e.target.value);
+    setSearchData(e.target.value.toLowerCase());
     // console.log(searchData);
   };
 
@@ -39,9 +39,16 @@ function Body() {
         ele.info?.name?.toLowerCase().includes(searchData)
       )
     );
-    console.log(filteredData);
+    // console.log(filteredData);
   };
 
+  if (!onlineStatus) {
+    return (
+      <>
+        <h1>U are in Offline kindly check your Internet Connection </h1>
+      </>
+    );
+  }
   // // Conditional Rendering
   // if (curr_data.length === 0) {
   //   return <Shimmer></Shimmer>;
@@ -80,7 +87,9 @@ function Body() {
       <div>
         <div className="outerContainer">
           {filteredData.map((e) => (
-            <ItemContainer key={e.id} resData={e.info}></ItemContainer>
+            <NavLink key={e.info.id} to={"/restaurants/" + e.info.id}>
+              <ItemContainer resData={e.info}></ItemContainer>
+            </NavLink>
           ))}
         </div>
       </div>
