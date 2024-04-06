@@ -1,5 +1,3 @@
-import "./Shimmer.css";
-
 const Shimmer = () => {
   return (
     <div className="outer-shimmer">

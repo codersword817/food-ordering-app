@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ItemContainer from "./ItemContainer";
-import "./Body.css";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { NavLink } from "react-router-dom";
@@ -57,8 +56,9 @@ function Body() {
     <Shimmer />
   ) : (
     <>
-      <div className="searchContainer">
+      <div className="searchContainer p-4 flex justify-center items-center bg-blue-100 box-border ">
         <input
+          className="mr-6 w-[24rem] p-3 border-black border-2"
           type="text"
           name="search"
           id="search-text"
@@ -67,15 +67,15 @@ function Body() {
           onChange={searchHandler}
         />
         <button
+          className=" rounded-md bg-blue-400 px-4 py-2 mr-2 text-white "
           id="search-button"
-          className="btn"
           onClick={searchButtonHandler}
         >
           Search
         </button>
         <button
           id="filter"
-          className="btn"
+          className="btn bg-blue-200 p-2 m-2 rounded-sm text-blue-700 hover:text-blue-950"
           onClick={() => {
             const data = filteredData.filter((res) => res.info.avgRating > 4.3);
             setFilteredData(data);
@@ -85,7 +85,7 @@ function Body() {
         </button>
       </div>
       <div>
-        <div className="outerContainer">
+        <div className="outerContainer flex flex-wrap justify-around bg-blue-100">
           {filteredData.map((e) => (
             <NavLink key={e.info.id} to={"/restaurants/" + e.info.id}>
               <ItemContainer resData={e.info}></ItemContainer>

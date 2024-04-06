@@ -1,5 +1,4 @@
 import React from "react";
-import "./ItemContainer.css";
 import { CDN_URL } from "../utils/constants";
 
 function ItemContainer(props) {
@@ -9,13 +8,13 @@ function ItemContainer(props) {
   const url = CDN_URL;
   return (
     <div>
-      <div className="container">
+      <div className="container h-[23rem] w-[16rem] flex flex-col m-4 p-4 border-2 border-solid shadow-md bg-blue-50 hover:bg-blue-300 ">
         <img
-          className="food-item"
+          className="food-item h-3/5 rounded-sm"
           src={url + resData.cloudinaryImageId}
           alt="food-item-img"
         />
-        <div>{resData.name}</div>
+        <div className=" font-bold ">{resData.name}</div>
         <div className="content">{resData.cuisines.join(", ")}</div>
         <div className="rating">
           {resData.avgRating} rating,
