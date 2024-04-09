@@ -8,11 +8,16 @@ const useResMenu = (resId) => {
   const fetchData = async (resId) => {
     const data = await fetch(MENU_API_URL + resId);
     const json = await data.json();
+    const categoryData =
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    // console.log(categoryData);
+
     setResInfo(
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-        ?.card?.itemCards ||
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-          ?.card?.categories[0]?.itemCards
+      categoryData.filter(
+        (e) =>
+          e.card?.["card"]?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      )
     );
   };
   return resInfo;

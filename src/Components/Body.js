@@ -16,6 +16,7 @@ function Body() {
     const dt =
       json_data?.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
+    // console.log();
     setData(dt);
     setFilteredData(dt);
   };
@@ -86,6 +87,7 @@ function Body() {
       </div>
       <div>
         <div className="outerContainer flex flex-wrap justify-around bg-blue-100">
+          {/* {console.log(filteredData)} */}
           {filteredData.map((e) => (
             <NavLink key={e.info.id} to={"/restaurants/" + e.info.id}>
               <ItemContainer resData={e.info}></ItemContainer>
