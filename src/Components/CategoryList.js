@@ -1,7 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 
 const CategoryList = ({ data }) => {
-  console.log(data);
   return (
     <>
       {data.map((e) => (

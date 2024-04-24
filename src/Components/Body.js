@@ -16,7 +16,6 @@ function Body() {
     const dt =
       json_data?.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    // console.log();
     setData(dt);
     setFilteredData(dt);
   };
@@ -24,12 +23,10 @@ function Body() {
   useState(() => {
     fetchData();
 
-    // console.log(filteredData);
   }, []);
 
   const searchHandler = (e) => {
     setSearchData(e.target.value.toLowerCase());
-    // console.log(searchData);
   };
 
   const searchButtonHandler = () => {
@@ -39,7 +36,6 @@ function Body() {
         ele.info?.name?.toLowerCase().includes(searchData)
       )
     );
-    // console.log(filteredData);
   };
 
   if (!onlineStatus) {
@@ -87,7 +83,6 @@ function Body() {
       </div>
       <div>
         <div className="outerContainer flex flex-wrap justify-around bg-blue-100">
-          {/* {console.log(filteredData)} */}
           {filteredData.map((e) => (
             <NavLink key={e.info.id} to={"/restaurants/" + e.info.id}>
               <ItemContainer resData={e.info}></ItemContainer>

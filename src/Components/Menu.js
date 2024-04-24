@@ -10,14 +10,14 @@ const Menu = () => {
   const { id } = useParams();
 
   const data = useResMenu(id);
-  // setMenuData(data);
-  // console.log(data);
   return data === null ? (
     <Shimmer />
   ) : (
     <>
       <div className="menu">
-        <MenuItems data={data}></MenuItems>
+        {data.map((e) => {
+          return <MenuItems key={e?.card?.card?.title} data={e} />;
+        })}
       </div>
     </>
   );
