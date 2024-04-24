@@ -1,12 +1,11 @@
-// import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-// import { MENU_API_URL } from "../utils/constants";
 import useResMenu from "../utils/useResMenu";
-// import { NavLink } from "react-router-dom";
 import MenuItems from "./MenuItems";
+import { useState } from "react";
 const Menu = () => {
   // const [menuData, setMenuData] = useState(null);
+  const [showIndex, setShowIndex] = useState(null);
   const { id } = useParams();
 
   const data = useResMenu(id);
@@ -15,8 +14,15 @@ const Menu = () => {
   ) : (
     <>
       <div className="menu">
-        {data.map((e) => {
-          return <MenuItems key={e?.card?.card?.title} data={e} />;
+        {data.map((e, idx) => {
+          return (
+            <MenuItems
+              key={e?.card?.card?.title}
+              data={e}
+              showItems={idx === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(idx)}
+            />
+          );
         })}
       </div>
     </>
