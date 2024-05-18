@@ -1,14 +1,15 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
 import Body from "./Body";
 import Error from "./Error";
 import Contact from "./Contact";
-// import About from "./About";
 import Menu from "./Menu";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 function Header() {
+  const { name } = useContext(UserContext);
   const [btnValue, setBtnValue] = useState("Login");
   const btnHandler = () => {
     btnValue === "Login" ? setBtnValue("Logout") : setBtnValue("Login");
@@ -41,6 +42,7 @@ function Header() {
             <button className="login mx-4" onClick={btnHandler}>
               {btnValue}
             </button>
+            <button className="login mx-4 font-bold">{name}</button>
           </ul>
         </div>
       </div>

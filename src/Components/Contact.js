@@ -1,7 +1,16 @@
 const Contact = () => {
   return (
     <>
-      <h1>THis is the COntact Us Page </h1>
+      <form action="">
+        <div>
+          <label htmlFor="Name">Name: </label>
+          <input type="text" />
+        </div>
+        <div>
+          <label htmlFor=""></label>
+          input
+        </div>
+      </form>
     </>
   );
 };
