@@ -5,15 +5,20 @@ import { NavLink, Routes, Route } from "react-router-dom";
 import Body from "./Body";
 import Error from "./Error";
 import Contact from "./Contact";
+import Cart from "./Cart";
 import Menu from "./Menu";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 function Header() {
   const { name } = useContext(UserContext);
   const [btnValue, setBtnValue] = useState("Login");
   const btnHandler = () => {
     btnValue === "Login" ? setBtnValue("Logout") : setBtnValue("Login");
   };
+  // subscribing the  store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
   const onlineStatus = useOnlineStatus();
   const About = lazy(() => import("./About"));
   return (
@@ -37,7 +42,9 @@ function Header() {
               <NavLink to="/contact">Contact Us</NavLink>
             </li>
             <li className="mx-4">
-              <NavLink to="/cart">Cart</NavLink>
+              <NavLink to="/cart" className=" font-bold ">
+                Cart - {cartItems.length}{" "}
+              </NavLink>
             </li>
             <button className="login mx-4" onClick={btnHandler}>
               {btnValue}
@@ -56,6 +63,7 @@ function Header() {
             </Suspense>
           }
         ></Route>
+        <Route path="/cart" element={<Cart items={cartItems} />}></Route>
         <Route path="/contact" element={<Contact></Contact>}></Route>
         <Route path="/restaurants/:id" element={<Menu />}></Route>
         <Route path="*" element={<Error></Error>}></Route>

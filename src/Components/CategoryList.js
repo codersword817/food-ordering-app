@@ -1,6 +1,11 @@
 import { CDN_URL } from "../utils/constants";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartDataStore";
 const CategoryList = ({ data }) => {
+  const dispatch = useDispatch();
+  const addToCartHandler = (data) => {
+    dispatch(addItem(data));
+  };
   return (
     <>
       {data.map((e) => (
@@ -22,7 +27,12 @@ const CategoryList = ({ data }) => {
               src={CDN_URL + e?.card?.info?.imageId}
               alt="Food Item img"
             />
-            <button className=" bg-green-100 p-2 ">ADD + </button>
+            <button
+              className=" bg-green-100 p-2 "
+              onClick={() => addToCartHandler(e?.card?.info)}
+            >
+              ADD +{" "}
+            </button>
           </div>
         </div>
       ))}
