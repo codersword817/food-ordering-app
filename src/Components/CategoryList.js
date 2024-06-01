@@ -28,7 +28,7 @@ const CategoryList = ({ data }) => {
               alt="Food Item img"
             />
             <button
-              className=" bg-green-100 p-2 "
+              className=" bg-green-100 p-2 hover:bg-green-300 hover:"
               onClick={() => addToCartHandler(e?.card?.info)}
             >
               ADD +{" "}
