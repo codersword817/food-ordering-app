@@ -23,9 +23,12 @@ function Header() {
   const About = lazy(() => import("./About"));
   return (
     <>
-      <div className="header flex justify-between bg-blue-200 shadow-md ">
-        <div className="logo-container w-24 space-x-4 mix-blend-multiply">
-          <img className="logo" src={LOGO_URL} alt="Food App Logo Img" />
+      <div className="header flex justify-between bg-blue-200 shadow-md h-24 ">
+        <div className="  mix-blend-multiply flex items-center ">
+          <img className="logo h-20" src={LOGO_URL} alt="Food App Logo Img" />
+          <h1 className=" font-bold font-serif text-xl mx-8 text-cyan-700 ">
+            Online Food Order App
+          </h1>
         </div>
         <div className="nav-items flex items-center justify-center">
           <ul className="flex p-4 space-x-4">
