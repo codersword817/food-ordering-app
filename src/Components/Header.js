@@ -27,7 +27,7 @@ function Header() {
         <div className="  mix-blend-multiply flex items-center ">
           <img className="logo h-20" src={LOGO_URL} alt="Food App Logo Img" />
           <h1 className=" font-bold font-serif text-xl mx-8 text-cyan-700 ">
-            Online Food Order App
+            Foodie Express.com
           </h1>
         </div>
         <div className="nav-items flex items-center justify-center">
