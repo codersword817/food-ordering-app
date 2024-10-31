@@ -20,6 +20,7 @@ function Header() {
   const cartItems = useSelector((store) => store.cart.items);
   // console.log(cartItems);
   const onlineStatus = useOnlineStatus();
+  // Lazy Loading => delay the rendering of the component that arent visible on screen to optimize the Performance
   const About = lazy(() => import("./About"));
   return (
     <>

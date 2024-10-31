@@ -10,7 +10,7 @@ const useResMenu = (resId) => {
     const json = await data.json();
     const categoryData =
       json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-    // console.log(categoryData);
+    console.log(categoryData);
 
     setResInfo(
       categoryData.filter(
