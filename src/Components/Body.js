@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ItemContainer from "./ItemContainer";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 function Body() {
   const [curr_data, setData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const onlineStatus = useOnlineStatus();
+  const { name, setUserName } = useContext(UserContext);
   const fetchData = async () => {
     const data = await fetch(SWIGGY_API_URL);
     const json_data = await data.json();
@@ -20,9 +22,8 @@ function Body() {
     setFilteredData(dt);
   };
 
-  useState(() => {
+  useEffect(() => {
     fetchData();
-
   }, []);
 
   const searchHandler = (e) => {
@@ -80,6 +81,15 @@ function Body() {
         >
           top-rated places
         </button>
+        <label htmlFor="name">UserName </label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          className="mx-2 p-2 rounded-lg"
+          defaultValue={name}
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
       <div>
         <div className="outerContainer flex flex-wrap justify-around bg-blue-100">

@@ -12,13 +12,13 @@ function App() {
   useEffect(() => {
     // authorization and get the userName by the api
     const data = {
-      name: "Aakash Maroju",
+      name: "Aakash   ",
     };
     setUserName(data.name);
   }, []);
   return (
     <Provider store={appStore}>
-      <UserContext.Provider value={{ name: userName }}>
+      <UserContext.Provider value={{ name: userName, setUserName }}>
         <Header></Header>
       </UserContext.Provider>
     </Provider>
